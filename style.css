@@ -5,6 +5,7 @@
   --muted: #6f6b63;
   --line: #c8c1b6;
   --accent: #b54a33;
+  --print-paper: #fffdf8;
 }
 
 * {
@@ -28,10 +29,10 @@ a {
 }
 
 .site-header {
-  display: flex;
   position: sticky;
   z-index: 10;
   top: 0;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1.25rem 4vw;
@@ -153,53 +154,12 @@ h3 {
   margin-top: 5rem;
 }
 
-.photo-placeholder {
-  display: flex;
-  min-height: 390px;
-  align-items: end;
-  padding: 1.25rem;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1.4rem;
-  font-weight: 700;
-  transition: transform 0.25s ease, filter 0.25s ease;
-}
-
-.photo-card:hover .photo-placeholder {
-  filter: brightness(1.08);
-  transform: translateY(-0.35rem);
-}
-
-.photo-one .photo-placeholder {
-  background: linear-gradient(135deg, #222d39, #7c8e99);
-}
-
-.photo-two .photo-placeholder {
-  background: linear-gradient(135deg, #b9895f, #3f3832);
-}
-
-.photo-three .photo-placeholder {
-  background: linear-gradient(135deg, #5f666d, #151617);
-}
-
-.photo-four .photo-placeholder {
-  background: linear-gradient(135deg, #937754, #ddd0b3);
-}
-
-.photo-five .photo-placeholder {
-  background: linear-gradient(135deg, #29485f, #9b5d4d);
-}
-
-.photo-six .photo-placeholder {
-  background: linear-gradient(135deg, #4d463e, #161514);
-}
-
 .postcard-frame {
-  position: relative;
-  padding: 1.05rem 1.05rem 1.65rem;
-  background: #f8f3e9;
+  padding: 1rem 1rem 1.6rem;
+  background: var(--print-paper);
   box-shadow:
-    0 0.25rem 0.55rem rgba(21, 21, 21, 0.16),
-    0 1.1rem 1.7rem rgba(21, 21, 21, 0.12);
+    0 0.25rem 0.55rem rgba(21, 21, 21, 0.14),
+    0 1rem 1.6rem rgba(21, 21, 21, 0.1);
   transform: rotate(-0.5deg);
   transition: transform 0.28s ease, box-shadow 0.28s ease;
 }
@@ -208,21 +168,15 @@ h3 {
   transform: rotate(0.65deg);
 }
 
-.postcard-frame::before {
-  position: absolute;
-  z-index: 1;
-  inset: 0;
-  pointer-events: none;
-  content: "";
-  opacity: 0.7;
-  background-image:
-    radial-gradient(circle at 0 0, transparent 0 5px, #f8f3e9 5.5px 100%),
-    radial-gradient(circle at 100% 0, transparent 0 5px, #f8f3e9 5.5px 100%),
-    radial-gradient(circle at 0 100%, transparent 0 5px, #f8f3e9 5.5px 100%),
-    radial-gradient(circle at 100% 100%, transparent 0 5px, #f8f3e9 5.5px 100%);
-  background-size: 12px 12px;
-  background-repeat: repeat-x, repeat-x, repeat-x, repeat-x;
-  background-position: top, top, bottom, bottom;
+.photo-card:hover .postcard-frame {
+  box-shadow:
+    0 0.4rem 0.85rem rgba(21, 21, 21, 0.16),
+    0 1.35rem 2rem rgba(21, 21, 21, 0.13);
+  transform: translateY(-0.35rem) rotate(-0.2deg);
+}
+
+.photo-card:nth-child(even):hover .postcard-frame {
+  transform: translateY(-0.35rem) rotate(0.2deg);
 }
 
 .portfolio-image {
@@ -232,17 +186,6 @@ h3 {
   border: 1px solid rgba(51, 43, 31, 0.16);
   filter: sepia(0.07) contrast(1.03);
   transition: filter 0.28s ease;
-}
-
-.photo-card:hover .postcard-frame {
-  box-shadow:
-    0 0.4rem 0.85rem rgba(21, 21, 21, 0.18),
-    0 1.5rem 2.2rem rgba(21, 21, 21, 0.16);
-  transform: translateY(-0.38rem) rotate(-0.2deg);
-}
-
-.photo-card:nth-child(even):hover .postcard-frame {
-  transform: translateY(-0.38rem) rotate(0.2deg);
 }
 
 .photo-card:hover .portfolio-image {
@@ -320,61 +263,6 @@ h3 {
   text-decoration: none;
 }
 
-@media (max-width: 760px) {
-      
-  .site-header {
-    padding: 1rem 5vw;
-  }
-
-  .navigation {
-    gap: 0.8rem;
-  }
-
-  .hero {
-    min-height: 66vh;
-    padding: 9rem 5vw 4rem;
-  }
-
-  .work-section {
-    padding: 5rem 5vw;
-  }
-
-  .section-heading,
-  .about-section {
-    display: block;
-  }
-
-  .section-heading h2 {
-    margin-top: 0.75rem;
-  }
-
-  .gallery {
-    display: block;
-  }
-
-
-  .photo-placeholder {
-    min-height: 62vw;
-  }
-
-  .about-section,
-  .contact-section {
-    padding: 5rem 5vw;
-  }
-
-  .about-text {
-    margin-top: 2rem;
-  }
-
-  .site-footer {
-    display: block;
-    padding: 1.5rem 5vw;
-  }
-
-  .site-footer a {
-    display: inline-block;
-    margin-top: 0.65rem;
-  }
 .lightbox {
   width: min(92vw, 1100px);
   max-height: 92vh;
@@ -432,5 +320,58 @@ h3 {
   cursor: zoom-in;
 }
 
+@media (max-width: 760px) {
+  .site-header {
+    padding: 1rem 5vw;
+  }
 
+  .navigation {
+    gap: 0.8rem;
+  }
+
+  .hero {
+    min-height: 66vh;
+    padding: 9rem 5vw 4rem;
+  }
+
+  .work-section {
+    padding: 5rem 5vw;
+  }
+
+  .section-heading,
+  .about-section {
+    display: block;
+  }
+
+  .section-heading h2 {
+    margin-top: 0.75rem;
+  }
+
+  .gallery {
+    display: block;
+  }
+
+  .photo-card,
+  .photo-card:nth-child(3n + 2) {
+    margin: 0 0 2.25rem;
+  }
+
+  .about-section,
+  .contact-section {
+    padding: 5rem 5vw;
+  }
+
+  .about-text {
+    margin-top: 2rem;
+  }
+
+  .site-footer {
+    display: block;
+    padding: 1.5rem 5vw;
+  }
+
+  .site-footer a {
+    display: inline-block;
+    margin-top: 0.65rem;
+  }
 }
