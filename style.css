@@ -193,6 +193,19 @@ h3 {
   background: linear-gradient(135deg, #4d463e, #161514);
 }
 
+.portfolio-image {
+  display: block;
+  width: 100%;
+  min-height: 390px;
+  object-fit: cover;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.photo-card:hover .portfolio-image {
+  filter: brightness(1.08);
+  transform: translateY(-0.35rem);
+}
+
 .photo-caption {
   padding: 0.85rem 0 1.25rem;
 }
@@ -265,6 +278,9 @@ h3 {
 }
 
 @media (max-width: 760px) {
+      .portfolio-image {
+    min-height: 62vw;
+  }
   .site-header {
     padding: 1rem 5vw;
   }
