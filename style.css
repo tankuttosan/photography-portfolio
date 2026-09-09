@@ -193,17 +193,60 @@ h3 {
   background: linear-gradient(135deg, #4d463e, #161514);
 }
 
+.postcard-frame {
+  position: relative;
+  padding: 1.05rem 1.05rem 1.65rem;
+  background: #f8f3e9;
+  box-shadow:
+    0 0.25rem 0.55rem rgba(21, 21, 21, 0.16),
+    0 1.1rem 1.7rem rgba(21, 21, 21, 0.12);
+  transform: rotate(-0.5deg);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.photo-card:nth-child(even) .postcard-frame {
+  transform: rotate(0.65deg);
+}
+
+.postcard-frame::before {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  opacity: 0.7;
+  background-image:
+    radial-gradient(circle at 0 0, transparent 0 5px, #f8f3e9 5.5px 100%),
+    radial-gradient(circle at 100% 0, transparent 0 5px, #f8f3e9 5.5px 100%),
+    radial-gradient(circle at 0 100%, transparent 0 5px, #f8f3e9 5.5px 100%),
+    radial-gradient(circle at 100% 100%, transparent 0 5px, #f8f3e9 5.5px 100%);
+  background-size: 12px 12px;
+  background-repeat: repeat-x, repeat-x, repeat-x, repeat-x;
+  background-position: top, top, bottom, bottom;
+}
+
 .portfolio-image {
   display: block;
   width: 100%;
   height: auto;
-  background: #ded9cf;
-  transition: transform 0.25s ease, filter 0.25s ease;
+  border: 1px solid rgba(51, 43, 31, 0.16);
+  filter: sepia(0.07) contrast(1.03);
+  transition: filter 0.28s ease;
+}
+
+.photo-card:hover .postcard-frame {
+  box-shadow:
+    0 0.4rem 0.85rem rgba(21, 21, 21, 0.18),
+    0 1.5rem 2.2rem rgba(21, 21, 21, 0.16);
+  transform: translateY(-0.38rem) rotate(-0.2deg);
+}
+
+.photo-card:nth-child(even):hover .postcard-frame {
+  transform: translateY(-0.38rem) rotate(0.2deg);
 }
 
 .photo-card:hover .portfolio-image {
-  filter: brightness(1.04);
-  transform: translateY(-0.25rem);
+  filter: sepia(0.02) contrast(1.06);
 }
 
 .photo-caption {
