@@ -9,9 +9,10 @@ galleryImages.forEach((image) => {
     lightboxImage.src = image.src;
     lightboxImage.alt = image.alt;
 
-    const caption = image.closest(".photo-card").querySelector(".photo-caption");
-    lightboxCaption.textContent = caption.textContent.trim();
+    const photoCard = image.closest(".photo-card");
+    const caption = photoCard.querySelector(".photo-caption");
 
+    lightboxCaption.textContent = caption.textContent.trim();
     lightbox.showModal();
   });
 });
@@ -24,4 +25,28 @@ lightbox.addEventListener("click", (event) => {
   if (event.target === lightbox) {
     lightbox.close();
   }
+});
+
+const filterButtons = document.querySelectorAll(".filter-button");
+const photoCards = document.querySelectorAll(".photo-card");
+
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const selectedFilter = button.dataset.filter;
+
+    filterButtons.forEach((item) => {
+      const isSelected = item === button;
+
+      item.classList.toggle("active", isSelected);
+      item.setAttribute("aria-pressed", String(isSelected));
+    });
+
+    photoCards.forEach((card) => {
+      const photoCategory = card.dataset.category;
+      const shouldShow =
+        selectedFilter === "all" || photoCategory === selectedFilter;
+
+      card.classList.toggle("is-hidden", !shouldShow);
+    });
+  });
 });
