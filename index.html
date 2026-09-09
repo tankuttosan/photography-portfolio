@@ -7,13 +7,13 @@
     name="description"
     content="A photography portfolio featuring street, travel, and documentary work."
   />
-  <title>Your Name — Photography</title>
+  <title>Tankut Aydin — Photography</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <header class="site-header">
-    <a class="brand" href="#top">YOUR NAME</a>
+    <a class="brand" href="#top">TANKUT AYDIN</a>
 
     <nav class="navigation" aria-label="Main navigation">
       <a href="#work">Work</a>
@@ -38,108 +38,165 @@
         <h2 id="work-title">Recent photographs</h2>
       </div>
 
-     <div class="gallery">
-  <article class="photo-card photo-one">
-    <div class="postcard-frame">
-      <img
-        class="portfolio-image lightbox-trigger"
-        src="images/4.jpg"
-        alt="Bird Cages"
-        width="1200"
-        height="1600"
-      />
-    </div>
-    <div class="photo-caption">
-      <h3>Bird Cages</h3>
-      <p>Bangok, Thailand · 2026</p>
-    </div>
-  </article>
+      <div class="filter-bar" aria-label="Filter photographs by category">
+        <button
+          class="filter-button active"
+          type="button"
+          data-filter="all"
+          aria-pressed="true"
+        >
+          All
+        </button>
 
-  <article class="photo-card photo-two">
-    <div class="postcard-frame">
-      <img
-        class="portfolio-image lightbox-trigger"
-        src="images/7.jpg"
-        alt="Monks"
-        width="1200"
-        height="1600"
-        loading="lazy"
-      />
-    </div>
-    <div class="photo-caption">
-      <h3>Monks</h3>
-      <p>Bangok, Thailand · 2026</p>
-    </div>
-  </article>
+        <button
+          class="filter-button"
+          type="button"
+          data-filter="street"
+          aria-pressed="false"
+        >
+          Street
+        </button>
 
-  <article class="photo-card photo-three">
-    <div class="postcard-frame">
-      <img
-        class="portfolio-image lightbox-trigger"
-        src="images/9.jpg"
-        alt="Insects on the Counter"
-        width="1200"
-        height="1600"
-        loading="lazy"
-      />
-    </div>
-    <div class="photo-caption">
-      <h3>Insects on the Counter</h3>
-      <p>Bangok, Night Market, Thailand · 2025</p>
-    </div>
-  </article>
+        <button
+          class="filter-button"
+          type="button"
+          data-filter="travel"
+          aria-pressed="false"
+        >
+          Travel
+        </button>
 
-  <article class="photo-card photo-four">
-    <div class="postcard-frame">
-      <img
-        class="portfolio-image lightbox-trigger"
-        src="images/10.jpg"
-        alt="Tuktuk on Charge"
-        width="1200"
-        height="1600"
-        loading="lazy"
-      />
-    </div>
-    <div class="photo-caption">
-      <h3>Tuktuk on Charge</h3>
-      <p>Bangok, Thailand · 2026</p>
-    </div>
-  </article>
+        <button
+          class="filter-button"
+          type="button"
+          data-filter="documentary"
+          aria-pressed="false"
+        >
+          Documentary
+        </button>
+      </div>
 
-  <article class="photo-card photo-five">
-    <div class="postcard-frame">
-      <img
-        class="portfolio-image lightbox-trigger"
-        src="images/11.jpg"
-        alt="Old Times"
-        width="1200"
-        height="1600"
-        loading="lazy"
-      />
-    </div>
-    <div class="photo-caption">
-      <h3>Old Times</h3>
-      <p>Old Times, Temple, Thailand · 2025</p>
-    </div>
-  </article>
+      <div class="gallery">
+        <article
+          class="photo-card photo-one"
+          data-category="documentary"
+        >
+          <div class="postcard-frame">
+            <img
+              class="portfolio-image lightbox-trigger"
+              src="images/4.jpg"
+              alt="Traditional bird cages in an old Bangkok interior"
+              width="1200"
+              height="1600"
+            />
+          </div>
+          <div class="photo-caption">
+            <h3>Bird Cages</h3>
+            <p>Bangkok, Thailand · 2026</p>
+          </div>
+        </article>
 
-  <article class="photo-card photo-six">
-    <div class="postcard-frame">
-      <img
-        class="portfolio-image lightbox-trigger"
-        src="images/12.jpg"
-        alt="Chatuchak Market"
-        width="1200"
-        height="1600"
-        loading="lazy"
-      />
-    </div>
-    <div class="photo-caption">
-      <h3>Chatuchak Market</h3>
-      <p>Bangok, Thailand · 2024</p>
-    </div>
-  </article>
-</div>
+        <article
+          class="photo-card photo-two"
+          data-category="travel"
+        >
+          <div class="postcard-frame">
+            <img
+              class="portfolio-image lightbox-trigger"
+              src="images/7.jpg"
+              alt="Buddhist monks standing near a golden temple in Bangkok"
+              width="1200"
+              height="1600"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-caption">
+            <h3>Monks</h3>
+            <p>Bangkok, Thailand · 2026</p>
+          </div>
+        </article>
+
+        <article
+          class="photo-card photo-three"
+          data-category="street"
+        >
+          <div class="postcard-frame">
+            <img
+              class="portfolio-image lightbox-trigger"
+              src="images/9.jpg"
+              alt="Insects displayed for sale at a Bangkok night market"
+              width="1200"
+              height="1600"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-caption">
+            <h3>Insects on the Counter</h3>
+            <p>Bangkok Night Market, Thailand · 2025</p>
+          </div>
+        </article>
+
+        <article
+          class="photo-card photo-four"
+          data-category="street"
+        >
+          <div class="postcard-frame">
+            <img
+              class="portfolio-image lightbox-trigger"
+              src="images/10.jpg"
+              alt="A tuk-tuk vehicle on a Bangkok street"
+              width="1200"
+              height="1600"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-caption">
+            <h3>Tuk-Tuk on Charge</h3>
+            <p>Bangkok, Thailand · 2026</p>
+          </div>
+        </article>
+
+        <article
+          class="photo-card photo-five"
+          data-category="documentary"
+        >
+          <div class="postcard-frame">
+            <img
+              class="portfolio-image lightbox-trigger"
+              src="images/11.jpg"
+              alt="A scene in an old temple in Thailand"
+              width="1200"
+              height="1600"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-caption">
+            <h3>Old Times</h3>
+            <p>Temple, Thailand · 2025</p>
+          </div>
+        </article>
+
+        <article
+          class="photo-card photo-six"
+          data-category="street"
+        >
+          <div class="postcard-frame">
+            <img
+              class="portfolio-image lightbox-trigger"
+              src="images/12.jpg"
+              alt="People walking through Chatuchak Market in Bangkok"
+              width="1200"
+              height="1600"
+              loading="lazy"
+            />
+          </div>
+          <div class="photo-caption">
+            <h3>Chatuchak Market</h3>
+            <p>Bangkok, Thailand · 2024</p>
+          </div>
+        </article>
+      </div>
+    </section>
 
     <section id="about" class="about-section" aria-labelledby="about-title">
       <div>
@@ -165,7 +222,7 @@
       <h2 id="contact-title">Let’s stay in touch.</h2>
       <p>
         For collaborations, licensing, or print inquiries, please contact me at
-        <a href="mailto:tankuta@icloud.com">your.email@example.com</a>.
+        <a href="mailto:tankuta@icloud.com">tankuta@icloud.com</a>.
       </p>
       <p>
         <a href="https://instagram.com/" target="_blank" rel="noreferrer">
@@ -181,18 +238,18 @@
   </footer>
 
   <dialog class="lightbox" id="lightbox" aria-label="Enlarged photograph">
-  <button class="lightbox-close" type="button" aria-label="Close enlarged photograph">
-    ×
-  </button>
+    <button
+  class="lightbox-close"
+  type="button"
+  aria-label="Close enlarged photograph"
+>
+  ×
+</button>
 
-  <img
-    id="lightbox-image"
-    src=""
-    alt=""
-  />
+    <img id="lightbox-image" src="" alt="" />
 
-  <p id="lightbox-caption" class="lightbox-caption"></p>
-</dialog>
+    <p id="lightbox-caption" class="lightbox-caption"></p>
+  </dialog>
 
   <script src="script.js"></script>
 </body>
