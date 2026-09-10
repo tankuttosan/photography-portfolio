@@ -990,3 +990,99 @@ h3 {
     transform: none;
   }
 }
+/* Final mobile corrections */
+
+@media (max-width: 760px) {
+  /* Main page: prevent images/cards from overflowing */
+  .gallery,
+  .places-grid {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .photo-card,
+  .place-card,
+  .place-photo,
+  .place-photo-portrait {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .postcard-frame,
+  .place-image,
+  .place-photo img,
+  .portfolio-image {
+    max-width: 100%;
+  }
+
+  /* Main gallery: one clean column */
+  .gallery {
+    display: block;
+  }
+
+  .photo-card,
+  .photo-card:nth-child(3n + 2) {
+    width: 100%;
+    margin: 0 0 2.25rem;
+  }
+
+  /* Places cards: one clean column */
+  .places-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .place-card {
+    width: 100%;
+  }
+
+  .place-image {
+    aspect-ratio: 3 / 2;
+  }
+
+  .place-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Qatar page: one clean column, all photo proportions preserved */
+  .place-gallery {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 5vw 5rem;
+  }
+
+  .place-photo,
+  .place-photo-wide,
+  .place-photo-portrait,
+  .place-photo-final-landscape,
+  .place-photo-final-portrait {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 2.5rem;
+    transform: none;
+  }
+
+  .place-photo img,
+  .place-photo-wide img,
+  .place-photo-portrait img,
+  .place-photo-final-landscape img,
+  .place-photo-final-portrait img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+  }
+
+  /* Avoid hover-only movement on touch devices */
+  .place-photo:hover,
+  .place-photo:nth-child(even):hover {
+    transform: none;
+  }
+}
