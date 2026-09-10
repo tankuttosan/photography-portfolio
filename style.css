@@ -204,12 +204,13 @@ h3 {
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 1.5rem;
 }
 
 .photo-card {
   grid-column: span 4;
+  min-width: 0;
 }
 
 .photo-card:nth-child(3n + 2) {
@@ -268,6 +269,122 @@ h3 {
   margin: 0;
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+/* Places */
+
+#places {
+  scroll-margin-top: 5.5rem;
+}
+
+.places-section {
+  padding: 7rem 4vw;
+  background: var(--soft);
+}
+
+.places-heading {
+  max-width: 48rem;
+  margin-bottom: 3.5rem;
+}
+
+.places-heading h2 {
+  max-width: 44rem;
+  margin-bottom: 1.25rem;
+}
+
+.places-intro {
+  max-width: 38rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.places-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.place-card {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--print-paper);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow:
+    0 0.25rem 0.55rem rgba(21, 21, 21, 0.1),
+    0 1rem 1.6rem rgba(21, 21, 21, 0.08);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.place-card:hover {
+  box-shadow:
+    0 0.45rem 0.95rem rgba(21, 21, 21, 0.14),
+    0 1.4rem 2.1rem rgba(21, 21, 21, 0.12);
+  transform: translateY(-0.35rem);
+}
+
+.place-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 0.3rem;
+}
+
+.place-image {
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  background: var(--line);
+}
+
+.place-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(0.06) contrast(1.03);
+  transition: filter 0.3s ease, transform 0.5s ease;
+}
+
+.place-card:hover .place-image img {
+  filter: sepia(0.01) contrast(1.06);
+  transform: scale(1.04);
+}
+
+.place-card-content {
+  padding: 1.4rem 1.5rem 1.6rem;
+}
+
+.place-number {
+  margin: 0 0 0.45rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.place-card h3 {
+  margin-bottom: 0.45rem;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.place-description {
+  max-width: 30rem;
+  min-height: 3em;
+  margin: 0 0 1.25rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.place-link {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 /* About and contact */
@@ -450,6 +567,15 @@ h3 {
     margin: 0 0 2.25rem;
   }
 
+  .places-section {
+    padding: 5rem 5vw;
+  }
+
+  .places-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
   .about-section,
   .contact-section {
     padding: 5rem 5vw;
@@ -474,5 +600,393 @@ h3 {
     max-height: calc(74vh - 1.5rem);
     margin-top: 0.75rem;
     padding: 0.45rem 0.45rem 0.75rem;
+  }
+}
+
+/* Place pages */
+
+.place-page {
+  min-height: 100vh;
+  background: var(--paper);
+}
+
+.place-header {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 4vw;
+  background: rgba(244, 241, 235, 0.92);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+}
+
+.place-brand {
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+}
+
+.all-places-link {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.all-places-link:hover,
+.all-places-link:focus {
+  color: var(--accent);
+}
+
+.place-intro {
+  max-width: 62rem;
+  padding: 8rem 8vw 4.5rem;
+}
+
+.place-intro h1 {
+  max-width: none;
+  margin-bottom: 1.25rem;
+  font-size: clamp(4.2rem, 11vw, 9rem);
+}
+
+.place-lede {
+  max-width: 42rem;
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  line-height: 1.6;
+}
+
+.place-gallery {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 2rem 1.5rem;
+  padding: 0 4vw 7rem;
+}
+
+.place-photo {
+  grid-column: span 6;
+  margin: 0;
+  min-width: 0;
+}
+
+.place-photo-wide {
+  grid-column: span 12;
+}
+
+.place-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 0.75rem 0.75rem 1.2rem;
+  background: var(--print-paper);
+  border: 1px solid rgba(51, 43, 31, 0.16);
+  box-shadow:
+    0 0.25rem 0.55rem rgba(21, 21, 21, 0.11),
+    0 1rem 1.6rem rgba(21, 21, 21, 0.08);
+  cursor: zoom-in;
+  filter: sepia(0.05) contrast(1.02);
+}
+
+.place-photo figcaption {
+  margin-top: 0.7rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.place-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem 4vw;
+  background: var(--soft);
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.place-footer p {
+  margin: 0;
+}
+
+.place-footer a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.place-footer a:hover,
+.place-footer a:focus {
+  color: var(--accent);
+}
+
+@media (max-width: 760px) {
+  .place-header {
+    padding: 1rem 5vw;
+  }
+
+  .place-intro {
+    padding: 6rem 5vw 3.5rem;
+  }
+
+  .place-gallery {
+    display: block;
+    padding: 0 5vw 5rem;
+  }
+
+  .place-photo,
+  .place-photo-wide {
+    margin: 0 0 2.5rem;
+  }
+
+  .place-footer {
+    display: block;
+    padding: 1.5rem 5vw;
+  }
+
+  .place-footer a {
+    display: inline-block;
+    margin-top: 0.65rem;
+  }
+}
+/* Qatar gallery size correction */
+
+.place-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 3rem 1.5rem;
+  padding: 0 4vw 7rem;
+}
+
+.place-photo,
+.place-photo-wide {
+  grid-column: span 1;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+.place-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 760px) {
+  .place-gallery {
+    display: block;
+    padding: 0 5vw 5rem;
+  }
+
+  .place-photo,
+  .place-photo-wide {
+    width: 100%;
+    margin: 0 0 2.5rem;
+  }
+
+  .place-photo img {
+    width: 100%;
+    height: auto;
+  }
+}
+/* Equal-height Qatar gallery */
+
+.place-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 2rem 1.5rem;
+  padding: 0 4vw 7rem;
+}
+
+.place-photo,
+.place-photo-wide {
+  grid-column: span 1;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+.place-photo img {
+  display: block;
+  width: 100%;
+  height: clamp(260px, 32vw, 520px);
+  padding: 0.75rem 0.75rem 1.2rem;
+  background: var(--print-paper);
+  border: 1px solid rgba(51, 43, 31, 0.16);
+  box-shadow:
+    0 0.25rem 0.55rem rgba(21, 21, 21, 0.11),
+    0 1rem 1.6rem rgba(21, 21, 21, 0.08);
+  cursor: zoom-in;
+  object-fit: cover;
+  object-position: center;
+  filter: sepia(0.05) contrast(1.02);
+}
+
+.place-photo figcaption {
+  margin-top: 0.7rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+@media (max-width: 760px) {
+  .place-gallery {
+    display: block;
+    padding: 0 5vw 5rem;
+  }
+
+  .place-photo,
+  .place-photo-wide {
+    width: 100%;
+    margin: 0 0 2.5rem;
+  }
+
+  .place-photo img {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+  }
+}
+/* Natural image proportions */
+
+.place-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 3rem 1.5rem;
+  padding: 0 4vw 7rem;
+}
+
+.place-photo,
+.place-photo-wide {
+  grid-column: span 1;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+.place-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  padding: 0.75rem 0.75rem 1.2rem;
+  background: var(--print-paper);
+  border: 1px solid rgba(51, 43, 31, 0.16);
+  box-shadow:
+    0 0.25rem 0.55rem rgba(21, 21, 21, 0.11),
+    0 1rem 1.6rem rgba(21, 21, 21, 0.08);
+  cursor: zoom-in;
+  object-fit: contain;
+  filter: sepia(0.05) contrast(1.02);
+}
+
+.place-photo figcaption {
+  margin-top: 0.7rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+@media (max-width: 760px) {
+  .place-gallery {
+    display: block;
+    padding: 0 5vw 5rem;
+  }
+
+  .place-photo,
+  .place-photo-wide {
+    display: block;
+    width: 100%;
+    margin: 0 0 2.5rem;
+  }
+
+  .place-photo img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
+/* Smaller portrait photographs without cropping */
+
+.place-photo-portrait {
+  width: 68%;
+  justify-self: center;
+}
+
+.place-photo-portrait img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 760px) {
+  .place-photo-portrait {
+    width: 100%;
+  }
+}
+/* Smaller portrait photographs without cropping */
+
+.place-photo-portrait {
+  width: 60%;
+  justify-self: center;
+}
+
+.place-photo-portrait img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 760px) {
+  .place-photo-portrait {
+    width: 100%;
+  }
+}
+/* Qatar postcard tilt and hover effect */
+
+.place-photo {
+  transition: transform 0.28s ease;
+}
+
+.place-photo:nth-child(odd) {
+  transform: rotate(-0.55deg);
+}
+
+.place-photo:nth-child(even) {
+  transform: rotate(0.55deg);
+}
+
+.place-photo:hover {
+  transform: translateY(-0.35rem) rotate(-0.18deg);
+}
+
+.place-photo:nth-child(even):hover {
+  transform: translateY(-0.35rem) rotate(0.18deg);
+}
+
+.place-photo img {
+  transition: filter 0.28s ease, box-shadow 0.28s ease;
+}
+
+.place-photo:hover img {
+  filter: sepia(0.02) contrast(1.06);
+  box-shadow:
+    0 0.4rem 0.85rem rgba(21, 21, 21, 0.16),
+    0 1.35rem 2rem rgba(21, 21, 21, 0.13);
+}
+
+@media (max-width: 760px) {
+  .place-photo:nth-child(odd),
+  .place-photo:nth-child(even),
+  .place-photo:hover,
+  .place-photo:nth-child(even):hover {
+    transform: none;
   }
 }

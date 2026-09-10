@@ -4,28 +4,33 @@ const lightboxCaption = document.getElementById("lightbox-caption");
 const closeButton = document.querySelector(".lightbox-close");
 const galleryImages = document.querySelectorAll(".lightbox-trigger");
 
-galleryImages.forEach((image) => {
-  image.addEventListener("click", () => {
-    lightboxImage.src = image.src;
-    lightboxImage.alt = image.alt;
+if (lightbox && lightboxImage && lightboxCaption && closeButton) {
+  galleryImages.forEach((image) => {
+    image.addEventListener("click", () => {
+      lightboxImage.src = image.src;
+      lightboxImage.alt = image.alt;
 
-    const photoCard = image.closest(".photo-card");
-    const caption = photoCard.querySelector(".photo-caption");
+      const card = image.closest(".photo-card, .place-photo");
+      const caption = card?.querySelector(".photo-caption, figcaption");
 
-    lightboxCaption.textContent = caption.textContent.trim();
-    lightbox.showModal();
+      lightboxCaption.textContent = caption
+        ? caption.textContent.trim()
+        : image.alt;
+
+      lightbox.showModal();
+    });
   });
-});
 
-closeButton.addEventListener("click", () => {
-  lightbox.close();
-});
-
-lightbox.addEventListener("click", (event) => {
-  if (event.target === lightbox) {
+  closeButton.addEventListener("click", () => {
     lightbox.close();
-  }
-});
+  });
+
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+      lightbox.close();
+    }
+  });
+}
 
 const filterButtons = document.querySelectorAll(".filter-button");
 const photoCards = document.querySelectorAll(".photo-card");
